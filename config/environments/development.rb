@@ -4,6 +4,7 @@
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -28,11 +29,6 @@
 
   # Don't care if the mailer can't send.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
-  host = 'nameless-savannah-89652.herokuapp.com'   # Don't use this literally; use your local dev host instead
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
-
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
@@ -55,4 +51,16 @@
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  
+  config.action_mailer.raise_delivery_errors =true
+  config.action_mailer.delivery_method = :smtp
+  host = "localhost:8000"
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+ :address              => "smtp.gmail.com",
+ :port                 => '587',
+ :authentication       => :plain,
+ :user_name            => "saiprasaddevare12@gmail.com",
+ :password             => "saiprasad2151"
+}
 end
